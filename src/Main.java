@@ -4,7 +4,8 @@ import java.util.List;
 abstract class Employee{
     private String name;
     private int id;
-    public Employee(String name,int id){
+    private int age;
+    public Employee(String name,int id,int age){
         this.name=name;
         this.id=id;
     }
@@ -13,6 +14,9 @@ abstract class Employee{
     }
     public int getId(){
         return id;
+    }
+    public int getAge(){
+        return age;
     }
     abstract double calculateSalary();
     @Override
@@ -23,8 +27,8 @@ abstract class Employee{
 }
 class FullTimeEmployee extends Employee{
     private double monthlySalary;
-    public FullTimeEmployee(String name,int id,double monthlySalary){
-        super(name,id);
+    public FullTimeEmployee(String name,int id,int age,double monthlySalary){
+        super(name,id,age);
         this.monthlySalary=monthlySalary;
     }
     @Override
@@ -35,8 +39,8 @@ class FullTimeEmployee extends Employee{
 class PartTimeEmployee extends Employee{
     private int hoursWorked;
     private double hourlyRate;
-    public PartTimeEmployee(String name,int id,int hoursWorked,double hourlyRate){
-        super(name,id);
+    public PartTimeEmployee(String name,int id,int age,int hoursWorked,double hourlyRate){
+        super(name,id,age);
         this.hoursWorked=hoursWorked;
         this.hourlyRate=hourlyRate;
     }
@@ -84,8 +88,8 @@ class PayrollSystem{
 public class Main {
     public static void main(String[] args) {
          PayrollSystem payrollSystem=new PayrollSystem();
-         FullTimeEmployee emp1=new FullTimeEmployee("vikas",1,70000.0);
-         PartTimeEmployee emp2=new PartTimeEmployee("rohan",2,40,100);
+         FullTimeEmployee emp1=new FullTimeEmployee("vikas",1,25,70000.0);
+         PartTimeEmployee emp2=new PartTimeEmployee("rohan",2,40,26,100);
          payrollSystem.addEmployee(emp1);
          payrollSystem.addEmployee(emp2);
         System.out.println("Initial employee details: ");
